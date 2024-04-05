@@ -3,9 +3,8 @@ from telegram.ext import CallbackContext
 import keyboards
 import db
 import sqlite3
-import datetime
+from datetime import datetime 
 import pytz
-
 
 
 def start(update: Update, context: CallbackContext):
@@ -287,19 +286,20 @@ def check_answer(update:Update, context:CallbackContext):
     cr = cnt.cursor()
     bot=context.bot
     chat_id = update.message.chat_id
+    username = update.message.chat.username
     command = f"""
      SELECT name FROM Obuna
     """
     channel = cr.execute(command).fetchall()
     a = check(chat_id,bot,channel)
     command = f"""
-        SELECT * FROM Admins WHERE chat_id = "{chat_id}"
+        SELECT * FROM Admins WHERE username = "{username}"
     """
     admin = cr.execute(command).fetchall()
     cnt.commit()
     if (a or admin):
         try:
-            cnt = sqlite3.connect('test.db')
+            cnt = sqlite3.connect('data.db')
             cr = cnt.cursor()
             data = update.message.text
             a,b,c = data[1:].split('*')
@@ -389,7 +389,7 @@ def teststng(update:Update, context:CallbackContext):
     msg = query.message.message_id
     bot=context.bot
     b = query.data.split(' ')[1]
-    cnt = sqlite3.connect('test.db')
+    cnt = sqlite3.connect('data.db')
     cr = cnt.cursor()
     if b[0]=='1':
         command = f"""
@@ -495,10 +495,8 @@ Maksimal ball: {h1} ball
                 for nm in qwe:
                     names[y].append(nm[1])
                 y+=1
-                mks.append(round((qwe[0][-3]/lenth)*100,1))
-            sertificate(names,anw[0][1],anw[0][3],cont,mks)
-            with open('sertifikat.pdf', 'rb') as file:
-                bot.send_document(chat_id=chat_id, document=file)
+                mks.append(round((float(qwe[0][-3])/int(lenth))*100,1))
+
             command = f"""
             DELETE FROM Answer WHERE id = {b[1:]}
             """

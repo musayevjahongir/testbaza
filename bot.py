@@ -12,6 +12,7 @@ def main():
     dp.add_handler(CallbackQueryHandler(handlers.admin, pattern='admin stng'))
     dp.add_handler(CallbackQueryHandler(handlers.userfun, pattern='user obuna'))
     dp.add_handler(CallbackQueryHandler(handlers.admin_control,pattern='admin '))
+    dp.add_handler(CallbackQueryHandler(handlers.teststng,pattern='answer '))
     dp.add_handler(CallbackQueryHandler(handlers.test,pattern='test '))
     dp.add_handler(MessageHandler(Filters.regex(r'^admin\+'),handlers.addadmin))
     dp.add_handler(MessageHandler(Filters.regex(r'^admin\-'),handlers.deladmin))
@@ -19,6 +20,7 @@ def main():
     dp.add_handler(MessageHandler(Filters.regex(r'^obuna\-'),handlers.del_obuna))
     dp.add_handler(MessageHandler(Filters.regex(r'^test\+'),handlers.addtest))
     dp.add_handler(MessageHandler(Filters.regex(r'send'),handlers.reklama))
+    dp.add_handler(MessageHandler(Filters.regex(r'$'),handlers.check_answer))
 
 
 
