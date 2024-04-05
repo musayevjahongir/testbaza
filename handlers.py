@@ -67,11 +67,11 @@ def admin_control(update: Update, context: CallbackContext):
     b = query.data.split(' ')[1]
     if b=='admin+':
         text = "Yangi admin qo'shish uchun\n```admin+user_name```\nKo'rinishida yangi adminni yuboring."
-        bot.sendMessage(chat_id,text,parse_mode=ParseMode.MARKDOWN)
+        bot.sendMessage(chat_id,text, parse_mode=ParseMode.MARKDOWN)
         bot.delete_message(chat_id, msg)
     elif b=='admin-':
         text = "Adminlikdan olish uchun\n```admin-user_name```\nKo'rinishida o'chirilishi kerak bo'lgan admin user_nameni yuboring."
-        bot.sendMessage(chat_id,text,parse_mode=ParseMode.MARKDOWN)
+        bot.sendMessage(chat_id,text)
         bot.delete_message(chat_id, msg)
     elif b == 'obuna':
         text = "Majburiy obuna qo'shish uchun avval botni kanal(guruh)ga to'liq admin qilasiz va quyidagicha ulaysiz:\n```obuna+@username```\n\nAksincha kanalni majburiy obunadan olib tashlash uchun:\n```obuna-@username```"
@@ -167,7 +167,7 @@ test+Aliyev Ali*Matematika*1a2d3c4a5b...*#
         """
         btn=InlineKeyboardButton('Ballik test yaratish✅',callback_data='ball +')
         btn = InlineKeyboardMarkup([[btn]])
-        bot.send_message(chat_id,text,reply_markup=btn)
+        bot.send_message(chat_id,text)
     else:
         text = """
 👇👇👇 Yo'riqnoma✅

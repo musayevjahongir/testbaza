@@ -14,6 +14,7 @@ def main():
     dp.add_handler(CallbackQueryHandler(handlers.admin_control,pattern='admin '))
     dp.add_handler(CallbackQueryHandler(handlers.teststng,pattern='answer '))
     dp.add_handler(CallbackQueryHandler(handlers.test,pattern='test '))
+    dp.add_handler(CallbackQueryHandler(handlers.balltest,pattern='ball +'))
     dp.add_handler(MessageHandler(Filters.regex(r'^admin\+'),handlers.addadmin))
     dp.add_handler(MessageHandler(Filters.regex(r'^admin\-'),handlers.deladmin))
     dp.add_handler(MessageHandler(Filters.regex(r'^obuna\+'),handlers.add_obuna))
