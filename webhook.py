@@ -16,7 +16,7 @@ def delete():
 
 
 def set():
-    url = 'http://127.0.0.1:5000'
+    url = 'https://jahon0306.pythonanywhere.com/'
     print(bot.set_webhook(url=url))
 
 set()

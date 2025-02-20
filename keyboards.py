@@ -1,5 +1,5 @@
 from telegram import ReplyKeyboardMarkup, KeyboardButton, InlineKeyboardMarkup, InlineKeyboardButton
-import db
+
 def start_admin():
     btn1 = InlineKeyboardButton('Statistika',callback_data=f'admin stc')
     btn2 = InlineKeyboardButton('Admin⚙️',callback_data='admin stng')
